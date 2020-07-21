@@ -1,0 +1,235 @@
+.wrapper {
+  position: relative;
+  width: 800px;;
+}
+.circle {
+  background-color: red;
+  overflow: hidden;
+  &.one {
+    .circle;
+  }
+  &.two {
+    .circle(150px);
+  }
+  &.three {
+    .circle;
+  }
+  &.four {
+    .circle;
+  }
+  &.pupel {
+    .circle(20px);
+    background-color: black;
+}
+}
+.box {
+  @color: rgb(189, 53, 0);
+  background-color: blueviolet;
+  &.one {
+    .rounded-corners;
+    width: 25px;
+    height: 25px;
+  }
+  &.two {
+    .rounded-corners(40px);
+    width: 125px;
+    height: 125px;
+  }
+  &.three {
+    background-color: @color;
+    .rounded-corners(90px);
+    position: absolute;
+    top: 200px;
+    right: 0;
+    width: 200px;
+    height: 200px;
+    .circle.one {
+      position: absolute;
+      top: 50px;
+      left: 40px;
+      width: 50px;
+      height: 25px;
+      background-color: white;
+    }
+    .circle.two {
+      position: absolute;
+      top: 50px;
+      left: 105px;
+      width: 50px;
+      height: 25px;
+      background-color: white;
+    }
+    .circle.three {
+      position: absolute;
+      top: 120px;
+      left: 57px;
+      width: 80px;
+      height: 25px;
+      background-color: black;
+    }
+    .circle.four {
+      position: absolute;
+      top: 125px;
+      left: 57px;
+      width: 80px;
+      height: 25px;
+      background-color: @color;
+    }
+    .circle.pupel {
+      position: absolute;
+      top: 10px;
+      left: -2px;
+      z-index: 200;
+    }
+  }
+}
+.triangle {
+  &.one {
+    .triangle("right", 45px, green);
+  }
+  &.two {
+    .triangle("up", 145px, green);
+  }
+}
+.search-pod {
+  &.one {
+    .search-pod;
+  }
+  &.two {
+    .search-pod(400px, 75px, red);
+  }
+  &.three {
+    .search-pod(400px, 50px, rgb(75, 158, 75));
+  }
+}
+
+
+
+//mixins
+.circle (@default: 20px) {
+  width: @default;
+  height: @default;
+  -webkit-border-radius:  50%;
+  -moz-border-radius:  50%;
+  border-radius:  50%;
+}
+.triangle (@direction: "right", @size: 5px, @color: black) when (@direction = "up") {
+  width: 0;
+  height: 0;
+  border-left: @size solid transparent;
+  border-right: @size solid transparent;
+  border-bottom: @size solid @color;
+}
+.triangle (@direction: "right", @size: 5px, @color: black) when (@direction = "right") {
+  width: 0;
+  height: 0;
+  border-top: @size solid transparent;
+  border-bottom: @size solid transparent;
+  border-left: @size solid @color;
+}
+.triangle (@direction: "right", @size: 5px, @color: black) when (@direction = "down") {
+  width: 0;
+  height: 0;
+  border-left: @size solid transparent;
+  border-right: @size solid transparent;
+  border-top: @size solid @color;
+}
+.triangle (@direction: "right", @size: 5px, @color: black) when (@direction = "left") {
+  width: 0;
+  height: 0;
+  border-top: @size solid transparent;
+  border-bottom: @size solid transparent;
+  border-right: @size solid @color;
+}
+
+.rounded-corners (@default: 5px) {
+  -webkit-border-top-left-radius:  @default;
+  -webkit-border-top-right-radius: @default;
+  -webkit-border-bottom-right-radius: @default;
+  -webkit-border-bottom-left-radius: @default;
+
+  -moz-border-radius-topleft:  @default;
+  -moz-border-radius-topright:  @default;
+  -moz-border-radius-bottomright: @default;
+  -moz-border-radius-bottomleft: @default;
+
+  border-top-left-radius:  @default;
+  border-top-right-radius: @default;
+  border-bottom-right-radius: @default;
+  border-bottom-left-radius: @default;
+}
+.box-shadow {
+  -webkit-box-shadow: 2px 2px 12px rgba(118,120,122, 0.5);
+  -moz-box-shadow: 2px 2px 12px rgba(118,120,122, 0.5);
+  box-shadow: 2px 2px 12px rgba(118,120,122, 0.5);
+}
+
+.search-pod(@width: 400px, @height: 100px, @color: rgb(51, 136, 165)) {
+
+  position: relative;
+  width: @width;
+  height: @height;
+  padding: 25px;
+  border: 2px solid;
+  border-color: darken(@color, 20%) darken(@color, 35%) darken(@color, 45%) darken(@color, 10%);
+  background-color: lighten(@color, 10%);
+  margin-bottom: 10px;
+  overflow: hidden;
+  z-index: 0;
+  -webkit-box-shadow: 2px 4px 8px rgba(60, 80, 135, 0.4);
+  -moz-box-shadow: 2px 4px 8px rgba(60, 80, 135, 0.4);
+  box-shadow: 2px 4px 8px rgba(60, 80, 135, 0.4);
+  -webkit-border-top-left-radius: 10px;
+  -webkit-border-top-right-radius: 10px;
+  -webkit-border-bottom-right-radius: 10px;
+  -webkit-border-bottom-left-radius: 10px;
+  -moz-border-radius-topleft: 10px;
+  -moz-border-radius-topright: 10px;
+  -moz-border-radius-bottomright: 10px;
+  -moz-border-radius-bottomleft: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+
+  .search-content {
+    width: 75%;
+    margin: 0 auto;
+    h4, p {
+      color: white;
+      margin: 0;
+      padding: 0;
+    }
+    h4 {
+      font-size: 18px;
+    }
+    p {
+      font-size: 12px;
+    }
+  }
+  .ellipse {
+    border-bottom-left-radius: 430px;
+  }
+  .ellipse {
+    position: absolute;
+    top: 0;
+    left: 18px;
+    width: 578px;
+    height: 100%;
+    background-color: darken(@color, 20%);
+    z-index: -1;
+    -webkit-border-top-left-radius: 369px;
+    -webkit-border-top-right-radius: 22px;
+    -webkit-border-bottom-right-radius: 22px;
+    -webkit-border-bottom-left-radius: 360px;
+    -moz-border-radius-topleft: 369px;
+    -moz-border-radius-topright: 22px;
+    -moz-border-radius-bottomright: 22px;
+    -moz-border-radius-bottomleft: 360px;
+    border-top-left-radius: 369px;
+    border-top-right-radius: 22px;
+    border-bottom-left-radius: 360px;
+    border-bottom-right-radius: 22px;
+  }
+}
+
