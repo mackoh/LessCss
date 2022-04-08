@@ -1,5 +1,6 @@
 //Primary brand colors
 @red:         #d23138;
+@lime:        #3ffd05;
 @black:       #28262e;
 @dark-green:  #32783b;
 @light-blue:  #d6e4ec;
@@ -15,13 +16,17 @@ strong {
 }
 .box {
   background-color: @light-blue;
-  //border: 1px solid darken(@light-blue, 50%);
-  .border(solid, 2px, blue);
+  border: 2px solid #a4a89f;
+  //border: 1px solid darken(@red, 50%);
+  .border(dashed, 2px, blue);
   padding: 20px;
 }
 
-
-.border (@width: 1px, @style: solid, @color: black) {
+.border (@width, @style, @color) {
+  //border: @width @style @color;
+  border: @arguments;
+}
+.border (@width: 1px, @style: solid, @color: rgb(231, 33, 205)) {
   //border: @width @style @color;
   border: @arguments;
 }

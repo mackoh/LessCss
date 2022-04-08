@@ -8,6 +8,8 @@ import { PositionComponent } from './position/position.component';
 import { VariablesComponent } from './variables/variables.component';
 import { HomeComponent } from './home/home.component';
 import { ShapesComponent } from './shapes/shapes.component';
+import { FirstComponentComponent } from './home/first-component/first-component.component';
+import { SecondComponentComponent } from './home/second-component/second-component.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { ShapesComponent } from './shapes/shapes.component';
     PositionComponent,
     VariablesComponent,
     HomeComponent,
-    ShapesComponent
+    ShapesComponent,
+    FirstComponentComponent,
+    SecondComponentComponent
   ],
   imports: [
     BrowserModule,

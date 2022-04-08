@@ -2,6 +2,7 @@
   position: relative;
   width: 800px;;
 }
+
 .circle {
   background-color: red;
   overflow: hidden;
@@ -9,7 +10,7 @@
     .circle;
   }
   &.two {
-    .circle(150px);
+    .circle(250px);
   }
   &.three {
     .circle;
@@ -17,13 +18,13 @@
   &.four {
     .circle;
   }
-  &.pupel {
+  &.pupil {
     .circle(20px);
     background-color: black;
-}
+  }
 }
 .box {
-  @color: rgb(189, 53, 0);
+  @color: rgb(179, 141, 71);
   background-color: blueviolet;
   &.one {
     .rounded-corners;
@@ -31,13 +32,15 @@
     height: 25px;
   }
   &.two {
-    .rounded-corners(40px);
+    .rounded-corners(10px);
     width: 125px;
     height: 125px;
   }
   &.three {
+    .rounded-corners(100px);
+    //.box-shadow(2px,6px,60px,rgba(60, 80, 135, 0.8));
+    border: 2px solid black;
     background-color: @color;
-    .rounded-corners(90px);
     position: absolute;
     top: 200px;
     right: 0;
@@ -75,17 +78,17 @@
       height: 25px;
       background-color: @color;
     }
-    .circle.pupel {
+    .circle.pupil {
       position: absolute;
       top: 10px;
-      left: -2px;
+      left: 35px;
       z-index: 200;
     }
   }
 }
 .triangle {
   &.one {
-    .triangle("right", 45px, green);
+    .triangle("down", 15px, green);
   }
   &.two {
     .triangle("up", 145px, green);
@@ -99,11 +102,9 @@
     .search-pod(400px, 75px, red);
   }
   &.three {
-    .search-pod(400px, 50px, rgb(75, 158, 75));
+    .search-pod(400px, 150px, rgb(75, 158, 75));
   }
 }
-
-
 
 //mixins
 .circle (@default: 20px) {
@@ -163,7 +164,21 @@
   -moz-box-shadow: 2px 2px 12px rgba(118,120,122, 0.5);
   box-shadow: 2px 2px 12px rgba(118,120,122, 0.5);
 }
-
+.box-shadow (@x, @y, @blur, @color) {
+  -webkit-box-shadow: @x @y @blur @color;
+  -moz-box-shadow: @x @y @blur @color;
+  box-shadow: @x @y @blur @color;
+}
+.box-shadow (@x: 2px, @y: 2px, @blur: 12px) {
+  -webkit-box-shadow: @x @y @blur rgba(118,120,122, 0.5);
+  -moz-box-shadow: @x @y @blur rgba(118,120,122, 0.5);
+  box-shadow: @x @y @blur rgba(118,120,122, 0.5);
+}
+.box-shadow (@x: 2px, @y: 2px, @blur: 12px, @rgba: 118 120 122 0.5) {
+  -webkit-box-shadow: @x @y @blur @rgba;
+  -moz-box-shadow: @x @y @blur @rgba;
+  box-shadow: @x @y @blur @rgba;
+}
 .search-pod(@width: 400px, @height: 100px, @color: rgb(51, 136, 165)) {
 
   position: relative;
